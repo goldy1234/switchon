@@ -1,0 +1,82 @@
+.newtask {
+    &-header {
+        &-container {
+            height: fit-content;
+        }
+        &-wrapper {
+            display: flex;
+            border-bottom: 2px solid lightgrey;
+            .back-arrow,
+            .create-task-text {
+                font-weight: 600;
+                margin: 20px;
+                font-size: 24px;
+            }
+            .back-arrow{
+                cursor: pointer;
+            }
+        }
+    }
+    &-form-wrapper {
+        padding: 40px 0 0 70px;
+        .task {
+            &-name-wrapper,
+            &-description-wrapper {
+                margin-bottom: 30px;
+                color: darkgray;
+                font-size: 18px;
+                input,
+                textarea {
+                    border: none;
+                    background: lightgrey;
+                    color: #2a2a2a;
+                    padding: 10px;
+                    border-radius: 8px;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+    &-buttons-wrapper {
+        color: darkgray;
+        font-size: 18px;
+        margin: 10px 0 30px;
+        .buttons {
+            border: 2px solid lightgray;
+            border-radius: 10px;
+            width: fit-content;
+            display: flex;
+            div{
+                padding: 10px;
+                cursor: pointer;
+                color: #2a2a2a;
+                &:not(:nth-child(3)){
+                border-right: 2px solid lightgrey;
+                }
+                &.selected-branch{
+                    background: lightgreen;
+                }
+            }
+        }
+    }
+    &-form-buttons{
+        display: flex;
+        div{
+            cursor: pointer;
+            color: #2a2a2a;
+            border-radius: 10px;
+            margin-right: 10px;
+            padding: 10px;
+            font-size: 18px;
+            &.cancel{
+                background: lightgrey;
+            }
+            &.create{
+                background:green;
+                color: white;
+            }
+        }
+    }
+}

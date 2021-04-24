@@ -1,0 +1,37 @@
+.pie-chart {
+    &-wrapper {
+        width: fit-content;
+        margin: 50px auto 20px;
+    }
+    &-colors {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-evenly;
+        .dot{
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .toDo-color {
+            display: flex;
+            .dot {
+               background: #ffbf00;
+            }
+        }
+        .inProgress-color {
+            display: flex;
+            .dot{
+                background: #33cc33;
+            }
+        }
+        .done-color {
+            display: flex;
+            .dot{
+                background: #0080ff;
+            }
+        }
+    }
+}

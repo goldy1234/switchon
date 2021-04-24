@@ -1,0 +1,23 @@
+.userInfo-container{
+    height: 100vh;
+    border-right: 2px solid green;
+    .goToAnalytics{
+        background: lightgrey;
+        padding: 10px 20px;
+        div{
+            font-size: 18px;
+            color: white;
+            font-weight: 600;
+            padding: 10px;
+            background: green;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+    }
+}
+.logout-section{
+    height: 100vh;
+    background: grey;
+}
