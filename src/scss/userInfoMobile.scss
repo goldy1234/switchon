@@ -25,6 +25,13 @@
             &.plus-icon{
                 font-size: 26px;
             }
+            &.logout{
+                width: 15px;
+                padding: 12px 10px 10px 12px;
+                img{
+                    width: 100%;
+                }
+            }
         }
     }
 }

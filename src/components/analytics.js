@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import UserInfo from './userInfo';
 import { useHistory } from 'react-router';
+import {useEffect} from 'react';
 
 export default function Analytics() {
     const toDoData = useSelector(state => state.toDo);
@@ -12,6 +13,11 @@ export default function Analytics() {
     const handleBackClick = () => {
         history.push("/home");
     }
+    useEffect(() => {
+        if (!localStorage.getItem("token")) {
+            history.push("/");
+        }
+    }, [])
 
     const showUserInfo =  window.innerWidth > 960;
     return (

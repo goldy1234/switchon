@@ -19,7 +19,13 @@ export default function Login() {
         try {
             dispatch(authenticate(data))
                 .then((response) => {
-                    response.payload.error ? setErrorMessage(response.payload) : history.push("/home")
+                    if(response.payload.error){
+                        setErrorMessage(response.payload);
+                    }
+                    else{
+                        localStorage.setItem("token",response.payload.token);
+                        history.push("/home");
+                    }
                 })
         }
         catch (err) {

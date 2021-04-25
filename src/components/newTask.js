@@ -1,6 +1,6 @@
 import UserInfo from './userInfo';
 import Grid from '@material-ui/core/Grid';
-import { useRef, useState } from 'react';
+import { useRef, useState,useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToDo, addInProgress, addDone } from '../actions';
@@ -12,6 +12,12 @@ export default function NewTask() {
     const titleRef = useRef();
     const descriptionRef = useRef();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (!localStorage.getItem("token")) {
+            history.push("/");
+        }
+    }, [])
 
     const branchClickHandler = (e, branch) => {
         setSelectedBranch(branch);

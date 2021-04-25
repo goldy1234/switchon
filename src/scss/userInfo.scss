@@ -1,9 +1,10 @@
 .userInfo-container {
     height: 100vh;
+    overflow: auto;
     border-right: 2px solid green;
-    .userImage{
+    .userImage {
         width: 65px;
-        img{
+        img {
             width: 100%;
         }
     }
@@ -25,5 +26,12 @@
 }
 .logout-section {
     height: 100vh;
+    overflow: auto;
     background: grey;
+    width: 20px;
+    padding: 10px;
+    img{
+        cursor: pointer;
+        width: 100%;
+    }
 }
