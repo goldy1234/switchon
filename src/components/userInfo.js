@@ -13,7 +13,7 @@ export default function UserInfo() {
             </Grid>
             <Grid item md={10} xs={10} lg={10}>
                 <div className="userInfo-container">
-                    userInfo section
+                <div className="userImage"><img src="https://icon-library.com/images/person-icon-svg/person-icon-svg-10.jpg"></img></div>
                     {
                         location.pathname === "/home" ?
                             <div className="goToAnalytics" onClick={goToAnalytics}>

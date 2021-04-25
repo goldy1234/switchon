@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authenticate } from '../actions';
 import { useHistory } from "react-router-dom";
+import Grid from '@material-ui/core/Grid';
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -18,7 +19,6 @@ export default function Login() {
         try {
             dispatch(authenticate(data))
                 .then((response) => {
-                    console.log(response.payload);
                     response.payload.error ? setErrorMessage(response.payload) : history.push("/home")
                 })
         }
@@ -27,12 +27,11 @@ export default function Login() {
         }
     }
     return (
-        <div className="login-container">
-
-            <div className="logo-wrapper">
+        <Grid container className="login-container">
+            <Grid item md={6} lg={6} sm={12} xs={12} className="logo-wrapper">
                 <div className="logo">SWITCH ON ASSIGNMENT</div>
-            </div>
-            <div className="sign-in-wrapper">
+            </Grid>
+            <Grid item md={6} lg={6} sm={12} xs={12} className="sign-in-wrapper">
                 <div className="title">To- Do App</div>
                 <div className="login-form">
                     {
@@ -42,8 +41,7 @@ export default function Login() {
                     <div><input type="password" placeholder="Password" ref={passwordRef} /></div>
                     <input type="submit" value="Login" className="submit" onClick={authenticateUser} />
                 </div>
-            </div>
-
-        </div>
+            </Grid>
+        </Grid>
     )
 }

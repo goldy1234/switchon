@@ -12,19 +12,25 @@ export default function Analytics() {
     const handleBackClick = () => {
         history.push("/home");
     }
+
+    const showUserInfo =  window.innerWidth > 960;
     return (
         <Grid container>
-            <Grid item md={3} xs={3} lg={3}>
-                <UserInfo />
-            </Grid>
-            <Grid item md={9} xs={9} lg={9} container className="newtask-header-container">
-                <Grid item md={12} xs={12} lg={12}>
+             {
+               showUserInfo  ?
+                    <Grid item md={3} xs={3} lg={3}>
+                        <UserInfo />
+                    </Grid>
+                    : <></>
+            }
+            <Grid item md={9} xs={12} lg={9} sm={12} container className="newtask-header-container">
+                <Grid item md={12} xs={12} lg={12} sm={12}>
                     <div className="newtask-header-wrapper">
                         <div className="back-arrow" onClick={handleBackClick}>&#8592;</div>
                         <div className="create-task-text">Analytics</div>
                     </div>
                 </Grid>
-                <Grid item md={12} xs={12} lg={12}>
+                <Grid item md={12} xs={12} lg={12} sm={12}>
                     <div className="pie-chart-wrapper">
                         <PieChart
                             data={[
@@ -32,7 +38,6 @@ export default function Analytics() {
                                 { title: 'InProgress', value: inProgressData.length, color: '#33cc33' },
                                 { title: 'Done', value: doneData.length, color: '#0080ff' },
                             ]}
-                            paddingAngle={3}
                         />
                         <div className="pie-chart-colors">
                             <div className="toDo-color">

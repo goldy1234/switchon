@@ -1,0 +1,30 @@
+.userInfo-mobile-wrapper{
+    background:gray;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    .userImage{
+        width: 25px;
+        display: flex;
+        padding: 10px;
+        img{
+            width: 100%;
+        }
+    }
+    .navigation-wrapper{
+        display: flex;
+        div{
+            padding: 10px;
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+            &.arrow-icon{
+                transform: rotate(200deg);
+            }
+            &.plus-icon{
+                font-size: 26px;
+            }
+        }
+    }
+}

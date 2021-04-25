@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToDo, removeToDo, addInProgress, removeInProgress,addDone,removeDone } from '../actions';
 import UserInfo from './userInfo';
+import UserInfoMobile from './userInfoMobile';
 import { useHistory } from 'react-router-dom';
 
 export default function Home() {
@@ -116,15 +117,23 @@ export default function Home() {
     const navigateToNewTask = () => {
         history.push("/newTask");
     }
+    const showUserInfo =  window.innerWidth > 960;
     return (
         <Grid container className="home-page-wrapper">
-            <Grid item md={3} xs={12} lg={3} sm={12}>
-                <UserInfo />
-            </Grid>
+           {
+               showUserInfo ?
+                    <Grid item md={3} xs={3} lg={3}>
+                        <UserInfo />
+                    </Grid>
+                    : <UserInfoMobile/>
+            }
             <Grid item md={9} xs={12} lg={9} sm={12} container className="home-page-content-wrapper">
-                <Grid item md={12} xs={12} lg={12} className="new-task-wrapper">
+                {
+                    showUserInfo ?
+                    <Grid item md={12} xs={12} lg={12} className="new-task-wrapper">
                     <div className="new-task-button"><div className="new-task-button-text" onClick={navigateToNewTask} >New Task</div></div>
-                </Grid>
+                </Grid>:<></>
+                }
                 <Grid item md={12} xs={12} lg={12} container>
                 <Grid item md={4} xs={12} lg={4} sm={12}>
                     <div className="to-do-wrapper" onDragOver={e => allowDrop(e)} ref={toDoRef}>
