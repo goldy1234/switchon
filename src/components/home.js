@@ -82,7 +82,7 @@ export default function Home() {
 
     const allowDrop = (e) => {
             if (toDoRef.current.contains(e.target)) {
-                setMoveTo("toDo")
+                setMoveTo("toDo");
             }
             else if (inProgressRef.current.contains(e.target)) {
                 setMoveTo("inProgress");
@@ -95,20 +95,38 @@ export default function Home() {
             }
     }
 
+    const allowDropInMobile = (e) => {
+        const x = e.targetTouches[0].clientX;
+        const y = e.targetTouches[0].clientY;
+        const element = document.elementFromPoint(x,y);
+        if (toDoRef.current.contains(element)) {
+            setMoveTo("toDo");
+        }
+        else if (inProgressRef.current.contains(element)) {
+            setMoveTo("inProgress");
+        }
+        else if (doneRef.current.contains(element)) {
+             setMoveTo("inDone");
+        }
+        else{
+            setMoveTo("");
+        }
+        
+    }
     const navigateToNewTask = () => {
         history.push("/newTask");
     }
     return (
         <Grid container className="home-page-wrapper">
-            <Grid item md={3} xs={3} lg={3}>
+            <Grid item md={3} xs={12} lg={3} sm={12}>
                 <UserInfo />
             </Grid>
-            <Grid item md={9} xs={9} lg={9} container className="home-page-content-wrapper">
+            <Grid item md={9} xs={12} lg={9} sm={12} container className="home-page-content-wrapper">
                 <Grid item md={12} xs={12} lg={12} className="new-task-wrapper">
                     <div className="new-task-button"><div className="new-task-button-text" onClick={navigateToNewTask} >New Task</div></div>
                 </Grid>
                 <Grid item md={12} xs={12} lg={12} container>
-                <Grid item md={4} xs={4} lg={4}>
+                <Grid item md={4} xs={12} lg={4} sm={12}>
                     <div className="to-do-wrapper" onDragOver={e => allowDrop(e)} ref={toDoRef}>
                         <div className="title">To-Do</div>
                         <div className="content-wrapper">
@@ -116,7 +134,9 @@ export default function Home() {
                                 toDoData.length ?
                                     toDoData.map((item, index) => {
                                         return (
-                                            <div className="content" key={index} id={index} draggable="true" onDragStart={(e) => dragStart(e, index)} onDragEnd={e => dragEnd(e)}>
+                                            <div className="content" key={index} id={index} draggable="true" onDragStart={(e) => dragStart(e, index)} 
+                                            onTouchStart={(e) => dragStart(e, index)}  onDragEnd={e => dragEnd(e)} onTouchEnd={e => dragEnd(e)}
+                                             onTouchMove={e => allowDropInMobile(e)}>
                                                 <div className="content-title">{item.title}</div>
                                                 <div className="content-description">
                                                     {item.description}
@@ -129,7 +149,7 @@ export default function Home() {
                         </div>
                     </div>
                 </Grid>
-                <Grid item md={4} xs={4} lg={4}>
+                <Grid item md={4} xs={12} lg={4} sm={12}>
                     <div className="in-progress-wrapper" onDragOver={e => allowDrop(e)} ref={inProgressRef}>
                         <div className="title">In-progress</div>
                         <div className="content-wrapper">
@@ -137,7 +157,8 @@ export default function Home() {
                                 inProgressData.length ?
                                     inProgressData.map((item, index) => {
                                         return (
-                                            <div className="content" key={index} id={index} draggable="true" onDragStart={(e) => dragStart(e, index)} onDragEnd={e => dragEnd(e)}>
+                                            <div className="content" key={index} id={index} draggable="true" onDragStart={(e) => dragStart(e, index)}  onTouchStart={(e) => dragStart(e, index)} 
+                                            onDragEnd={e => dragEnd(e)} onTouchEnd={e => dragEnd(e)} onTouchMove={e => allowDropInMobile(e)}>
                                                 <div className="content-title">{item.title}</div>
                                                 <div className="content-description">
                                                     {item.description}
@@ -150,7 +171,7 @@ export default function Home() {
                         </div>
                     </div>
                 </Grid>
-                <Grid item md={4} xs={4} lg={4}>
+                <Grid item md={4} xs={12} lg={4} sm={12}>
                     <div className="done-wrapper" onDragOver={e => allowDrop(e)} ref={doneRef}>
                         <div className="title">Done</div>
                         <div className="content-wrapper">
@@ -158,7 +179,8 @@ export default function Home() {
                                 doneData.length ?
                                     doneData.map((item, index) => {
                                         return (
-                                            <div className="content" key={index} id={index} draggable="true" onDragStart={(e) => dragStart(e, index)} onDragEnd={e => dragEnd(e)}>
+                                            <div className="content" key={index} id={index} draggable="true" onDragStart={(e) => dragStart(e, index)}  onTouchStart={(e) => dragStart(e, index)} 
+                                            onDragEnd={e => dragEnd(e)} onTouchEnd={e => dragEnd(e)} onTouchMove={e => allowDropInMobile(e)}>
                                                 <div className="content-title">{item.title}</div>
                                                 <div className="content-description">
                                                     {item.description}
